@@ -58,9 +58,8 @@ namespace BanckAccountSystem.Repository
         }
 
         private void updateOrCreateTransaction(BankAccount bankAccount)
-        {
-            BankAccount account = context.BankAccounts.FirstOrDefault(x => x.BankAccountId == bankAccount.BankAccountId);
-           var currentTrans = context.Transactions.Where(x=>x.BankAccount.BankAccountId == bankAccount.BankAccountId).ToList();
+        {    
+            var currentTrans = context.Transactions.Where(x=>x.BankAccount.BankAccountId == bankAccount.BankAccountId).ToList();
             foreach (Transaction trs in currentTrans)
             {
                 context.Transactions.Remove(trs);
